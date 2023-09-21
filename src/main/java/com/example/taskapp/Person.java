@@ -33,8 +33,11 @@ public class Person {
         else
             throw new IllegalArgumentException("Enter a valid email.");
     }
-
-
+    
+    @Override
+    public String toString(){
+        return fullName;
+    }
 
 
 

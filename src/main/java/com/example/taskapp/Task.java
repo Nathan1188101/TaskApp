@@ -12,6 +12,7 @@ public class Task {
     private boolean inProgress, done;
 
     public Task(String title, String description, String category, Person assignedTo, LocalDate dueDate, int priority) {
+        creationDate = LocalDate.now();
         setTitle(title);
         setDescription(description);
         setCategory(category);
@@ -20,7 +21,6 @@ public class Task {
         setPriority(priority);
         inProgress = false;
         done = false;
-        creationDate = LocalDate.now();
     }
 
     public Task(String title, String description, String category, Person assignedTo, LocalDate creationDate, LocalDate dueDate, int priority) {
@@ -153,4 +153,9 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+    public String toString(){
+        return String.format("%s assigned to %s", title, assignedTo);
+    }
+
 }
