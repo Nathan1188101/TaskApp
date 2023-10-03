@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.taskapp.CreateUserController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="800.0" prefWidth="800.0" stylesheets="@stlye.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.taskapp.CreateUserController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="284.0" layoutY="69.0" prefHeight="800.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label id="header" prefHeight="52.0" prefWidth="240.0" text="Create User" textAlignment="CENTER">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <GridPane prefHeight="235.0" prefWidth="760.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="352.5332946777344" minWidth="10.0" prefWidth="174.39999389648438" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="545.6000061035156" minWidth="10.0" prefWidth="545.6000061035156" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Username" />
+                  <Label text="Email" GridPane.rowIndex="1" />
+                  <Label text="Confirm Email" GridPane.rowIndex="2" />
+                  <TextField fx:id="userName" prefHeight="26.0" prefWidth="59.0" GridPane.columnIndex="1" />
+                  <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="confirmEmail" prefHeight="20.0" prefWidth="89.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+               </children>
+               <padding>
+                  <Insets left="30.0" right="30.0" />
+               </padding>
+            </GridPane>
+            <Label fx:id="msgLabel" text="Label" />
+            <Button mnemonicParsing="false" onAction="#submit" text="Submit" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
 </AnchorPane>

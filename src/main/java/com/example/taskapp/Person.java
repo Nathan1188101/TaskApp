@@ -14,10 +14,10 @@ public class Person {
 
     public void setFullName(String fullName) {
         fullName = fullName.trim();
-        if(fullName.matches("[A-z\\-]*"))
+        if(fullName.matches("[A-z\\-]+"))
             this.fullName = fullName;
         else
-            throw new IllegalArgumentException("Name can only contain letters, space or -");
+            throw new IllegalArgumentException("name cannot be blank and use letters, space, or - ");
 
     }
 

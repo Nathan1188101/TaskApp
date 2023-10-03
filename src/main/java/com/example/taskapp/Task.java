@@ -2,6 +2,7 @@ package com.example.taskapp;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 public class Task {
 
@@ -9,18 +10,20 @@ public class Task {
     private Person assignedTo;
     private LocalDate creationDate, dueDate;
     private int priority;
-    private boolean inProgress, done;
+    //private boolean inProgress, done;
+    private Status status;
 
     public Task(String title, String description, String category, Person assignedTo, LocalDate dueDate, int priority) {
         creationDate = LocalDate.now();
+        status = Status.CREATED;
         setTitle(title);
         setDescription(description);
         setCategory(category);
         setAssignedTo(assignedTo);
         setDueDate(dueDate);
         setPriority(priority);
-        inProgress = false;
-        done = false;
+        //inProgress = false;
+        //done = false;
     }
 
     public Task(String title, String description, String category, Person assignedTo, LocalDate creationDate, LocalDate dueDate, int priority) {
@@ -80,12 +83,13 @@ public class Task {
     /**
      * List -> handle multiple objects, user can order the elements, can support duplicates
      * Set -> this prevents duplicates, the system sets the order
+     * Tree -> this automatically sorts the objects
      * @return
      */
 
-    public static ArrayList<String> getCategories()
+    public static TreeSet<String> getCategories()
     {
-        ArrayList<String> categories = new ArrayList<>();
+        TreeSet<String> categories = new TreeSet<>();
         categories.add("personal");
         categories.add("work");
         categories.add("school");
@@ -138,6 +142,7 @@ public class Task {
             throw new IllegalArgumentException("Priorty must be from 1 - 3.");
     }
 
+    /*
     public boolean isInProgress() {
         return inProgress;
     }
@@ -153,6 +158,11 @@ public class Task {
     public void setDone(boolean done) {
         this.done = done;
     }
+
+     */
+
+    public Status getStatus(){return status;}
+    public void setStatus(Status status){this.status = status;}
 
     public String toString(){
         return String.format("%s assigned to %s", title, assignedTo);

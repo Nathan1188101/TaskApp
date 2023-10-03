@@ -1,6 +1,7 @@
 package com.example.taskapp;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DBUtility {
 
@@ -45,6 +46,42 @@ public class DBUtility {
         }
 
         return responseMsg;
+    }
+
+    /**
+     * This method will return an ArrayList of all valid users in the database
+     */
+    public static ArrayList<Person> getUsers(){
+
+        ArrayList<Person> users = new ArrayList<>();
+
+        String sql = "SELECT * FROM users";
+        try(
+                Connection conn = DriverManager.getConnection(connectUrl, user, password);
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(sql);
+                )
+        {
+            //loop over all the users in the result set and ad Person objects to the Arraylist
+            while(resultSet.next())
+            {
+                String fullName = resultSet.getString("fullName");
+                String email = resultSet.getString("email");
+                try{
+                    Person person = new Person (fullName, email);
+                }catch(IllegalArgumentException e)
+                {
+                    System.out.printf("email: '%s' fullName: '%s' not valid ", fullName, email);
+                }
+            }
+        }
+            catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return users;
+
     }
 
 }
